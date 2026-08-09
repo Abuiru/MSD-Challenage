@@ -1,0 +1,21 @@
+
+Storage Health Report — merck-prod-storage-01
+Run time (UTC): 2023-10-27T12:00:00+00:00
+Overall status: CRITICAL
+Findings: 4 CRITICAL, 3 WARNING, 0 INFO (0 OK)
+
+[CRITICAL]
+  - (hardware) node-A2: Node status is 'Offline', expected 'Online'.
+  - (capacity) san_db_prod_01: Capacity at 97.8% (> 95.0% critical threshold).
+  - (replication) nas_home_dirs: Last successful sync was 33.8h ago (> 12.0h critical RPO threshold).
+  - (replication) nas_projects: Last successful sync was 21.5h ago (> 12.0h critical RPO threshold).
+
+[WARNING]
+  - (data_quality) node-C3: Node record is missing 'status' field; flagged, not evaluated.
+  - (capacity) nas_projects: Capacity at 88.4% (> 85.0% warning threshold).
+  - (data_quality) nas_archive_01: Volume record is missing 'used_capacity_percent'; flagged, not evaluated.
+2026-08-09 21:00:32,158 INFO Mock webhook payload:
+{
+  "text": "*Storage Health Report \u2014 merck-prod-storage-01*\n```Storage Health Report \u2014 merck-prod-storage-01\nRun time (UTC): 2023-10-27T12:00:00+00:00\nOverall status: CRITICAL\nFindings: 4 CRITICAL, 3 WARNING, 0 INFO (0 OK)\n\n[CRITICAL]\n  - (hardware) node-A2: Node status is 'Offline', expected 'Online'.\n  - (capacity) san_db_prod_01: Capacity at 97.8% (> 95.0% critical threshold).\n  - (replication) nas_home_dirs: Last successful sync was 33.8h ago (> 12.0h critical RPO threshold).\n  - (replication) nas_projects: Last successful sync was 21.5h ago (> 12.0h critical RPO threshold).\n\n[WARNING]\n  - (data_quality) node-C3: Node record is missing 'status' field; flagged, not evaluated.\n  - (capacity) nas_projects: Capacity at 88.4% (> 85.0% warning threshold).\n  - (data_quality) nas_archive_01: Volume record is missing 'used_capacity_percent'; flagged, not evaluated.```"
+}
+2026-08-09 21:00:32,158 INFO Run finished with exit code 1

@@ -1,0 +1,90 @@
+{
+  "cluster_name": "merck-prod-storage-01",
+  "run_timestamp_utc": "2023-10-27T12:00:00+00:00",
+  "overall_severity": "CRITICAL",
+  "finding_counts": {
+    "OK": 0,
+    "INFO": 0,
+    "WARNING": 3,
+    "CRITICAL": 4
+  },
+  "findings": [
+    {
+      "category": "hardware",
+      "severity": "CRITICAL",
+      "resource": "node-A2",
+      "message": "Node status is 'Offline', expected 'Online'.",
+      "details": {
+        "status": "Offline",
+        "model": "FAS8300"
+      }
+    },
+    {
+      "category": "data_quality",
+      "severity": "WARNING",
+      "resource": "node-C3",
+      "message": "Node record is missing 'status' field; flagged, not evaluated.",
+      "details": {
+        "raw_record": {
+          "node_id": "node-C3",
+          "model": "FAS8700"
+        }
+      }
+    },
+    {
+      "category": "capacity",
+      "severity": "CRITICAL",
+      "resource": "san_db_prod_01",
+      "message": "Capacity at 97.8% (> 95.0% critical threshold).",
+      "details": {
+        "used_capacity_percent": 97.8,
+        "protocol": "iSCSI"
+      }
+    },
+    {
+      "category": "capacity",
+      "severity": "WARNING",
+      "resource": "nas_projects",
+      "message": "Capacity at 88.4% (> 85.0% warning threshold).",
+      "details": {
+        "used_capacity_percent": 88.4,
+        "protocol": "NFS"
+      }
+    },
+    {
+      "category": "data_quality",
+      "severity": "WARNING",
+      "resource": "nas_archive_01",
+      "message": "Volume record is missing 'used_capacity_percent'; flagged, not evaluated.",
+      "details": {
+        "raw_record": {
+          "volume_name": "nas_archive_01",
+          "protocol": "NFS",
+          "size_gb": 20000
+        }
+      }
+    },
+    {
+      "category": "replication",
+      "severity": "CRITICAL",
+      "resource": "nas_home_dirs",
+      "message": "Last successful sync was 33.8h ago (> 12.0h critical RPO threshold).",
+      "details": {
+        "destination_target": "aws-fsx-dr-02",
+        "last_successful_sync": "2023-10-26T02:15:00Z",
+        "age_hours": 33.75
+      }
+    },
+    {
+      "category": "replication",
+      "severity": "CRITICAL",
+      "resource": "nas_projects",
+      "message": "Last successful sync was 21.5h ago (> 12.0h critical RPO threshold).",
+      "details": {
+        "destination_target": "aws-fsx-dr-03",
+        "last_successful_sync": "2023-10-26 14:30",
+        "age_hours": 21.5
+      }
+    }
+  ]
+}

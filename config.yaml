@@ -1,0 +1,28 @@
+# config.yaml
+# Tunable thresholds for the Proactive Storage Health Monitor.
+# Operators can adjust these values without touching monitor.py.
+# Any value here can also be overridden by an environment variable
+# (see README.md "Configuration" section for the mapping).
+
+thresholds:
+  # Hardware: any node whose status != expected_node_status is unhealthy.
+  expected_node_status: "Online"
+
+  # Capacity: used_capacity_percent thresholds, in percent.
+  capacity_warning_percent: 85
+  capacity_critical_percent: 95
+
+  # Replication: how old (in hours) last_successful_sync may be before
+  # it's considered an RPO breach.
+  replication_lag_warning_hours: 4
+  replication_lag_critical_hours: 12
+
+# Where to send the human-readable alert (mock webhook).
+# Set to null / omit to only print to console.
+notifications:
+  webhook_url: null
+  webhook_type: "slack"   # "slack" or "teams"
+
+# Input source for the monitor. Overridden by --input / MONITOR_INPUT_PATH.
+input:
+  source_path: "storage_api_mock.json"

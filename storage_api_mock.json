@@ -1,0 +1,82 @@
+{
+  "cluster_name": "merck-prod-storage-01",
+  "timestamp": "2023-10-27T12:00:00Z",
+  "hardware_nodes": [
+    {
+      "node_id": "node-A1",
+      "model": "FAS8300",
+      "status": "Online"
+    },
+    {
+      "node_id": "node-A2",
+      "model": "FAS8300",
+      "status": "Offline"
+    },
+    {
+      "node_id": "node-B2",
+      "model": "FAS8300",
+      "status": "Online"
+    },
+    {
+      "node_id": "node-C3",
+      "model": "FAS8700"
+    }
+  ],
+  "volumes": [
+    {
+      "volume_name": "san_db_prod_01",
+      "protocol": "iSCSI",
+      "size_gb": 5000,
+      "used_capacity_percent": 97.8
+    },
+    {
+      "volume_name": "nas_projects",
+      "protocol": "NFS",
+      "size_gb": 8000,
+      "used_capacity_percent": 88.4
+    },
+    {
+      "volume_name": "nas_home_dirs",
+      "protocol": "NFS",
+      "size_gb": 10000,
+      "used_capacity_percent": 72.1
+    },
+    {
+      "volume_name": "san_vmware_ds01",
+      "protocol": "iSCSI",
+      "size_gb": 6000,
+      "used_capacity_percent": 64.5
+    },
+    {
+      "volume_name": "nas_archive_01",
+      "protocol": "NFS",
+      "size_gb": 20000
+    }
+  ],
+  "replication_relationships": [
+    {
+      "source_volume": "san_db_prod_01",
+      "destination_target": "aws-fsx-dr-01",
+      "status": "Healthy",
+      "last_successful_sync": "2023-10-27T11:45:00Z"
+    },
+    {
+      "source_volume": "nas_home_dirs",
+      "destination_target": "aws-fsx-dr-02",
+      "status": "Lagging",
+      "last_successful_sync": "2023-10-26T02:15:00Z"
+    },
+    {
+      "source_volume": "nas_projects",
+      "destination_target": "aws-fsx-dr-03",
+      "status": "Unknown",
+      "last_successful_sync": "2023-10-26 14:30"
+    },
+    {
+      "source_volume": "san_vmware_ds01",
+      "destination_target": "aws-fsx-dr-04",
+      "status": "Healthy",
+      "last_successful_sync": "2023-10-27T11:30:00Z"
+    }
+  ]
+}
